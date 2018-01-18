@@ -28,7 +28,7 @@ func LoggingMiddleware(h http.Handler) http.Handler {
 		j, err := json.Marshal(entry)
 
 		if err != nil {
-			fmt.Println("error:", err)
+			os.Stderr.WriteString(fmt.Sprintf("serialization error:%v", err))
 		}
 	    
 		os.Stdout.Write(j)
