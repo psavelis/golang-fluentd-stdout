@@ -13,7 +13,7 @@ func main() {
 	http.Handle("/healthz", logging.FluentdMiddleware(healthzFunc))
 
 	fmt.Println("Started.")
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":80", nil)
 }
 
 // Healthz is
