@@ -1,7 +1,6 @@
 package main
 
 import (
-	"os"
 	"fmt"
   	"net/http"
   	"time"
@@ -28,10 +27,10 @@ func LoggingMiddleware(h http.Handler) http.Handler {
 		j, err := json.Marshal(entry)
 
 		if err != nil {
-			os.Stderr.WriteString(fmt.Sprintf("serialization error:%v", err))
+			fmt.Printf("serialization error:%v", err)
 		}
 	    
-		os.Stdout.Write(j)
+		fmt.Println(j)
 
 		h.ServeHTTP(w, r)
 	})

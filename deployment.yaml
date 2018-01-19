@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: golang-fluentd
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: golang-fluentd
+    spec:
+      containers:
+      - name: golang-fluentd
+        image: gcr.io/dotzcloud-production/golang-fluentd
+        imagePullPolicy: Always
+        ports:
+        - name: http
+          containerPort: 80

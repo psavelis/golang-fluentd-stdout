@@ -12,7 +12,9 @@ func main() {
 	healthzFunc := http.HandlerFunc(Healthz)
 	http.Handle("/healthz",LoggingMiddleware(healthzFunc))
 
-	http.ListenAndServe(":6001", nil)
+	fmt.Println("Started.")
+
+	http.ListenAndServe(":8080", nil)
 }
 
 // Healthz is
