@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+
 	logging "github.com/psavelis/golang-fluentd-stdout/middlewares"
 )
 
@@ -13,7 +14,7 @@ func main() {
 	http.Handle("/healthz", logging.FluentdMiddleware(healthzFunc))
 
 	fmt.Println("Started.")
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":8080", nil)
 }
 
 // Healthz is
