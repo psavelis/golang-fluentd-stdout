@@ -18,7 +18,6 @@ type ActionLog struct {
 	Req       *RequestData  `json:"req"`
 	Res       *ResponseData `json:"res"`
 	Tags      []string      `json:"tags"`
-	Lion      string        `json:"lion"`
 }
 
 // RequestData is
@@ -96,15 +95,14 @@ func NewActionLog(logType string, tags []string, message string, r *http.Request
 		Method:    r.Method,
 		Pid:       os.Getpid(),
 		Tags:      tags,
-		Lion:      "dolly citrus",
-		// Req: &RequestData{
-		// 	URL:			r.URL.String(),
-		// 	Method:			r.Method,
-		// 	Headers: 		&r.Header,
-		// 	Referer:		r.Referer(),
-		// 	UserAgent:		r.UserAgent(),
-		// 	RemoteAddress:	r.RemoteAddr,
-		// },
+		Req: &RequestData{
+			URL:           r.URL.String(),
+			Method:        r.Method,
+			Headers:       &r.Header,
+			Referer:       r.Referer(),
+			UserAgent:     r.UserAgent(),
+			RemoteAddress: r.RemoteAddr,
+		},
 	}
 
 	return entry
